@@ -21,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Lab3.scala" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Lab3.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/jsy/student/Lab3.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="119" column="58" lean-forward="true" selection-start-line="119" selection-start-column="58" selection-end-line="119" selection-end-column="58" />
+            <state relative-caret-position="456">
+              <caret line="120" column="9" lean-forward="false" selection-start-line="120" selection-start-column="9" selection-end-line="120" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -51,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Lab3Spec.scala" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Lab3Spec.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/scala/jsy/student/Lab3Spec.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="711">
-              <caret line="127" column="50" lean-forward="false" selection-start-line="127" selection-start-column="50" selection-end-line="127" selection-end-column="50" />
+            <state relative-caret-position="336">
+              <caret line="114" column="72" lean-forward="true" selection-start-line="114" selection-start-column="72" selection-end-line="114" selection-end-column="72" />
               <folding />
             </state>
           </provider>
@@ -409,6 +409,9 @@
     <history-entry file="Lab3Suite - 2018.02.16 at 15h 24m 27s.xml">
       <configuration name="Lab3Suite" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
+    <history-entry file="Lab3Suite - 2018.02.16 at 16h 00m 24s.xml">
+      <configuration name="Lab3Suite" configurationId="ScalaTestRunConfiguration" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="4332000" />
@@ -518,18 +521,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/jsy/student/Lab3Spec.scala">
+    <entry file="file://$PROJECT_DIR$/src/main/scala/jsy/student/Lab3.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="711">
-          <caret line="127" column="50" lean-forward="false" selection-start-line="127" selection-start-column="50" selection-end-line="127" selection-end-column="50" />
+        <state relative-caret-position="456">
+          <caret line="120" column="9" lean-forward="false" selection-start-line="120" selection-start-column="9" selection-end-line="120" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/jsy/student/Lab3.scala">
+    <entry file="file://$PROJECT_DIR$/src/test/scala/jsy/student/Lab3Spec.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="119" column="58" lean-forward="true" selection-start-line="119" selection-start-column="58" selection-end-line="119" selection-end-column="58" />
+        <state relative-caret-position="336">
+          <caret line="114" column="72" lean-forward="true" selection-start-line="114" selection-start-column="72" selection-end-line="114" selection-end-column="72" />
           <folding />
         </state>
       </provider>

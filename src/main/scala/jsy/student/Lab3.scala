@@ -119,7 +119,6 @@ object Lab3 extends JsyApplication with Lab3Like {
           val env2 = extend(env, name, v1)
           eval(extend(env2, param, eval(env2, e2)), ebody)
         }
-//        case Some(p) => extend(env, x, e1)
       }
 
       case If(e1, e2,e3) => if(toBoolean(eval(env, e1))) eval(env,e2) else eval(env, e3)
