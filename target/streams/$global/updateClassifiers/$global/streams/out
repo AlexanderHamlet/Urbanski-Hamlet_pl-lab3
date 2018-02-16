@@ -933,25 +933,25 @@
 [debug] == resolving dependencies edu.colorado.cs#pppl-lab3$sources;3.2.2->org.scala-lang#scala-reflect;2.11.8 [scala-tool->master]
 [debug] 	resolved ivy file produced in cache
 [debug] :: downloading artifacts ::
-[debug] 	[NOT REQUIRED] org.scala-lang#scala-library;2.11.8!scala-library.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-xml_2.11;1.0.5!scala-xml_2.11.jar(src)
-[debug] 	[NOT REQUIRED] org.scalatest#scalatest_2.11;3.0.0!scalatest_2.11.jar(src)
+[debug] 	[NOT REQUIRED] org.scala-lang#scala-reflect;2.11.8!scala-reflect.jar(src)
+[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4!scala-parser-combinators_2.11.jar(src)
+[debug] 	[NOT REQUIRED] org.scala-lang#scala-library;2.11.8!scala-library.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-lang#scala-compiler;2.11.8!scala-compiler.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-xml_2.11;1.0.4!scala-xml_2.11.jar(src)
 [debug] 	[NOT REQUIRED] jline#jline;2.12.1!jline.jar(src)
-[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4!scala-parser-combinators_2.11.jar(src)
+[debug] 	[NOT REQUIRED] org.scalatest#scalatest_2.11;3.0.0!scalatest_2.11.jar(src)
 [debug] 	[NOT REQUIRED] org.scalactic#scalactic_2.11;3.0.0!scalactic_2.11.jar(src)
-[debug] 	[NOT REQUIRED] org.scala-lang#scala-reflect;2.11.8!scala-reflect.jar(src)
-[debug] :: resolution report :: resolve 387ms :: artifacts dl 22ms
-[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 compile produced in /home/user/Desktop/Labs/pppl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-compile.xml
-[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 runtime produced in /home/user/Desktop/Labs/pppl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-runtime.xml
-[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 test produced in /home/user/Desktop/Labs/pppl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-test.xml
-[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 provided produced in /home/user/Desktop/Labs/pppl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-provided.xml
-[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 optional produced in /home/user/Desktop/Labs/pppl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-optional.xml
-[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 compile-internal produced in /home/user/Desktop/Labs/pppl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-compile-internal.xml
-[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 runtime-internal produced in /home/user/Desktop/Labs/pppl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-runtime-internal.xml
-[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 test-internal produced in /home/user/Desktop/Labs/pppl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-test-internal.xml
-[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 plugin produced in /home/user/Desktop/Labs/pppl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-plugin.xml
-[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 pom produced in /home/user/Desktop/Labs/pppl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-pom.xml
-[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 scala-tool produced in /home/user/Desktop/Labs/pppl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-scala-tool.xml
-[debug] 	resolve done (387ms resolve - 22ms download)
+[debug] :: resolution report :: resolve 175ms :: artifacts dl 7ms
+[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 compile produced in /Users/alexurbanski/Code/PPPL/Urbanski-Hamlet_pl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-compile.xml
+[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 runtime produced in /Users/alexurbanski/Code/PPPL/Urbanski-Hamlet_pl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-runtime.xml
+[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 test produced in /Users/alexurbanski/Code/PPPL/Urbanski-Hamlet_pl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-test.xml
+[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 provided produced in /Users/alexurbanski/Code/PPPL/Urbanski-Hamlet_pl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-provided.xml
+[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 optional produced in /Users/alexurbanski/Code/PPPL/Urbanski-Hamlet_pl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-optional.xml
+[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 compile-internal produced in /Users/alexurbanski/Code/PPPL/Urbanski-Hamlet_pl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-compile-internal.xml
+[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 runtime-internal produced in /Users/alexurbanski/Code/PPPL/Urbanski-Hamlet_pl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-runtime-internal.xml
+[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 test-internal produced in /Users/alexurbanski/Code/PPPL/Urbanski-Hamlet_pl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-test-internal.xml
+[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 plugin produced in /Users/alexurbanski/Code/PPPL/Urbanski-Hamlet_pl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-plugin.xml
+[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 pom produced in /Users/alexurbanski/Code/PPPL/Urbanski-Hamlet_pl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-pom.xml
+[debug] 	report for edu.colorado.cs#pppl-lab3$sources;3.2.2 scala-tool produced in /Users/alexurbanski/Code/PPPL/Urbanski-Hamlet_pl-lab3/target/scala-2.11/resolution-cache/reports/edu.colorado.cs-pppl-lab3$sources-scala-tool.xml
+[debug] 	resolve done (175ms resolve - 7ms download)

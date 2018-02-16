@@ -4,7 +4,7 @@
 		module="pppl-lab3$sources"
 		revision="3.2.2"
 		status="integration"
-		publication="20180213105832"
+		publication="20180216113747"
 	/>
 	<configurations>
 		<conf name="compile" visibility="public" description=""/>

@@ -113,11 +113,18 @@ object Lab3 extends JsyApplication with Lab3Like {
         // ****** Your cases here
       case ConstDecl(x, e1, e2) => eval(extend(env, x, eval(env, e1)), e2)
 
-      case Function(p, x, e1) => {
-        case None => eval(env, e1)
-        case Some(p) => env = extend(env, p, )
+      case Call(e1, e2) => eval(env, e1) match {
+        case Function(None, param, ebody) => {
+          val env2 = extend(env, param, eval(env, e2))
+          eval(env2, ebody)
+        }
+        case v1 @ Function(Some(name), param, ebody) => {
+          val env2 = extend(env, name, v1)
+          val env3 = extend(env2, param, eval(env2, e2))
+          eval(env3, ebody)
+        }
+//        case Some(p) => extend(env, x, e1)
       }
-      case Call(e1, e2) => ???
 
       case If(e1, e2,e3) => if(toBoolean(eval(env, e1))) eval(env,e2) else eval(env, e3)
 
