@@ -123,7 +123,7 @@ object Lab3 extends JsyApplication with Lab3Like {
           val env3 = extend(env2, param, eval(env2, e2))
           eval(env3, ebody)
         }
-//        case Some(p) => extend(env, x, e1)
+        case _ => ???
       }
 
       case If(e1, e2,e3) => if(toBoolean(eval(env, e1))) eval(env,e2) else eval(env, e3)
@@ -180,7 +180,10 @@ object Lab3 extends JsyApplication with Lab3Like {
   /* Small-Step Interpreter with Static Scoping */
 
   def iterate(e0: Expr)(next: (Expr, Int) => Option[Expr]): Expr = {
-    def loop(e: Expr, n: Int): Expr = ???
+    def loop(e: Expr, n: Int): Expr = next(e, n) match {
+      case None => e
+      case Some(expr) => loop(expr, n+1)
+    }
     loop(e0, 0)
   }
   
@@ -204,7 +207,9 @@ object Lab3 extends JsyApplication with Lab3Like {
     e match {
       /* Base Cases: Do Rules */
       case Print(v1) if isValue(v1) => println(pretty(v1)); Undefined
-      
+      case Unary(Neg, v) if(isValue(v)) => {
+        N(-toNumber(v))
+      }
         // ****** Your cases here
       
       /* Inductive Cases: Search Rules */
