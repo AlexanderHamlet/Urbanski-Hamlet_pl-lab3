@@ -123,7 +123,7 @@ object Lab3 extends JsyApplication with Lab3Like {
           val env3 = extend(env2, param, eval(env2, e2))
           eval(env3, ebody)
         }
-        case _ => ???
+        case _ => throw DynamicTypeError(e)
       }
 
       case If(e1, e2,e3) => if(toBoolean(eval(env, e1))) eval(env,e2) else eval(env, e3)
@@ -202,13 +202,36 @@ object Lab3 extends JsyApplication with Lab3Like {
       case ConstDecl(y, e1, e2) => ???
     }
   }
-    
+
   def step(e: Expr): Expr = {
     e match {
       /* Base Cases: Do Rules */
       case Print(v1) if isValue(v1) => println(pretty(v1)); Undefined
       case Unary(Neg, v) if(isValue(v)) => {
         N(-toNumber(v))
+      }
+      case Unary(Not, v) if(isValue(v)) => {
+        B(!toBoolean(v))
+      }
+      case Binary(Seq, e1, e2) if(isValue(e1)) => {
+        e2
+      }
+      case Binary(Plus, v1, v2) if(isValue(v1) && isValue(v2)) => {
+        (v1, v2) match {
+          case (N(n1), N(n2)) => N(n1 + n2)
+          case (S(s1), S(s2)) => S(s1 + s2)
+          case (S(s), v) => S(s + toStr(v))
+          case (v, S(s)) => S(toStr(v) + s)
+        }
+      }
+      case Binary(Minus, v1, v2) if(isValue(v1) && isValue(v2)) => {
+        N(toNumber(v1) - toNumber(v2))
+      }
+      case Binary(Times, v1, v2) if(isValue(v1) && isValue(v2)) => {
+        N(toNumber(v1) * toNumber(v2))
+      }
+      case Binary(Div, v1, v2) if(isValue(v1) && isValue(v2)) => {
+        N(toNumber(v1) / toNumber(v2))
       }
         // ****** Your cases here
       
