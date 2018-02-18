@@ -119,7 +119,7 @@ object Lab3 extends JsyApplication with Lab3Like {
           eval(env2, ebody)
         }
         case v1 @ Function(Some(name), param, ebody) => {
-          val env2 = extend(env, name, v1)
+          val env2 = extend(env, name, eval(env, v1))
           val env3 = extend(env2, param, eval(env2, e2))
           eval(env3, ebody)
         }
