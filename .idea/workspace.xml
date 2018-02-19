@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c356d717-d891-461c-b2d1-16125273a9dd" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/jsy/student/Lab3.scala" afterPath="$PROJECT_DIR$/src/main/scala/jsy/student/Lab3.scala" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/project/project/target/" />
@@ -22,13 +21,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Lab3.scala" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Lab3.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/jsy/student/Lab3.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="118" column="53" lean-forward="false" selection-start-line="118" selection-start-column="53" selection-end-line="118" selection-end-column="53" />
+            <state relative-caret-position="105">
+              <caret line="101" column="48" lean-forward="true" selection-start-line="101" selection-start-column="48" selection-end-line="101" selection-end-column="48" />
               <folding>
-                <marker date="1519076625684" expanded="true" signature="7347:7357" ph="..." />
+                <marker date="1519076740655" expanded="true" signature="7347:7357" ph="..." />
               </folding>
             </state>
           </provider>
@@ -54,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Lab3Spec.scala" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Lab3Spec.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/scala/jsy/student/Lab3Spec.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1341">
-              <caret line="142" column="13" lean-forward="false" selection-start-line="142" selection-start-column="13" selection-end-line="142" selection-end-column="13" />
+            <state relative-caret-position="756">
+              <caret line="142" column="11" lean-forward="false" selection-start-line="142" selection-start-column="11" selection-end-line="142" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -426,6 +425,9 @@
     <history-entry file="Lab3Suite - 2018.02.19 at 14h 43m 55s.xml">
       <configuration name="Lab3Suite" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
+    <history-entry file="Lab3Suite - 2018.02.19 at 14h 46m 20s.xml">
+      <configuration name="Lab3Suite" configurationId="ScalaTestRunConfiguration" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="11550000" />
@@ -507,7 +509,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1519076625684" expanded="true" signature="7347:7357" ph="..." />
+            <marker date="1519076740655" expanded="true" signature="7347:7357" ph="..." />
           </folding>
         </state>
       </provider>
@@ -541,7 +543,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1519076625684" expanded="true" signature="7347:7357" ph="..." />
+            <marker date="1519076740655" expanded="true" signature="7347:7357" ph="..." />
           </folding>
         </state>
       </provider>
@@ -575,7 +577,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1519076625684" expanded="true" signature="7347:7357" ph="..." />
+            <marker date="1519076740655" expanded="true" signature="7347:7357" ph="..." />
           </folding>
         </state>
       </provider>
@@ -609,7 +611,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1519076625684" expanded="true" signature="7347:7357" ph="..." />
+            <marker date="1519076740655" expanded="true" signature="7347:7357" ph="..." />
           </folding>
         </state>
       </provider>
@@ -674,7 +676,7 @@
         <state relative-caret-position="15">
           <caret line="127" column="0" lean-forward="false" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
           <folding>
-            <marker date="1519076625684" expanded="true" signature="7347:7357" ph="..." />
+            <marker date="1519076740655" expanded="true" signature="7347:7357" ph="..." />
           </folding>
         </state>
       </provider>
@@ -684,7 +686,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1519076625684" expanded="true" signature="7347:7357" ph="..." />
+            <marker date="1519076740655" expanded="true" signature="7347:7357" ph="..." />
           </folding>
         </state>
       </provider>
@@ -718,7 +720,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1519076625684" expanded="true" signature="7347:7357" ph="..." />
+            <marker date="1519076740655" expanded="true" signature="7347:7357" ph="..." />
           </folding>
         </state>
       </provider>
@@ -783,7 +785,7 @@
         <state relative-caret-position="360">
           <caret line="127" column="0" lean-forward="false" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
           <folding>
-            <marker date="1519076625684" expanded="true" signature="7347:7357" ph="..." />
+            <marker date="1519076740655" expanded="true" signature="7347:7357" ph="..." />
           </folding>
         </state>
       </provider>
@@ -793,7 +795,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1519076625684" expanded="true" signature="7347:7357" ph="..." />
+            <marker date="1519076740655" expanded="true" signature="7347:7357" ph="..." />
           </folding>
         </state>
       </provider>
@@ -827,7 +829,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1519076625684" expanded="true" signature="7347:7357" ph="..." />
+            <marker date="1519076740655" expanded="true" signature="7347:7357" ph="..." />
           </folding>
         </state>
       </provider>
@@ -902,21 +904,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/jsy/student/Lab3Spec.scala">
+    <entry file="file://$PROJECT_DIR$/src/main/scala/jsy/student/Lab3.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1341">
-          <caret line="142" column="13" lean-forward="false" selection-start-line="142" selection-start-column="13" selection-end-line="142" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="105">
+          <caret line="101" column="48" lean-forward="true" selection-start-line="101" selection-start-column="48" selection-end-line="101" selection-end-column="48" />
+          <folding>
+            <marker date="1519076740655" expanded="true" signature="7347:7357" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/jsy/student/Lab3.scala">
+    <entry file="file://$PROJECT_DIR$/src/test/scala/jsy/student/Lab3Spec.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="118" column="53" lean-forward="false" selection-start-line="118" selection-start-column="53" selection-end-line="118" selection-end-column="53" />
-          <folding>
-            <marker date="1519076625684" expanded="true" signature="7347:7357" ph="..." />
-          </folding>
+        <state relative-caret-position="756">
+          <caret line="142" column="11" lean-forward="false" selection-start-line="142" selection-start-column="11" selection-end-line="142" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
