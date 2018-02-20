@@ -68,6 +68,11 @@ object ast {
     case N(_) | B(_) | Undefined | S(_) | Function(_, _, _) => true
     case _ => false
   }
+
+  def isFunction(e: Expr): Boolean = e match {
+    case Function(_, _, _) => true
+    case _ => false
+  }
   
   /*
    * Pretty-print values.

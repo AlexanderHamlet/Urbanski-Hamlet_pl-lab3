@@ -230,10 +230,19 @@ object Lab3 extends JsyApplication with Lab3Like {
         N(toNumber(v1) / toNumber(v2))
       }
       case Binary(Eq, v1, v2) if(isValue(v1) && isValue(v2)) => {
-        if(toStr(v1) == toStr(v2)) B(true) else B(false)
+        if(!isFunction(v1)){
+          if(toStr(v1) == toStr(v2)) B(true) else B(false)
+        } else {
+          throw DynamicTypeError(e)
+        }
       }
       case Binary(Ne, v1, v2) if(isValue(v1) && isValue(v2)) => {
-        if(toStr(v1) != toStr(v2)) B(true) else B(false)
+        if(!isFunction(v1)){
+          if(toStr(v1) != toStr(v2)) B(true) else B(false)
+        } else {
+          throw DynamicTypeError(e)
+        }
+
       }
       case Binary(Lt, v1, v2) if(isValue(v1) && isValue(v2)) => {
         if(toStr(v1) < toStr(v2)) B(true) else B(false)
@@ -268,9 +277,11 @@ object Lab3 extends JsyApplication with Lab3Like {
         // ****** Your cases here
       
       /* Inductive Cases: Search Rules */
+        // You generate e1 prime and then just pass that in to step again
       case Print(e1) => Print(step(e1))
       
         // ****** Your cases here
+
 
       /* Cases that should never match. Your cases above should ensure this. */
       case Var(_) => throw new AssertionError("Gremlins: internal error, not closed expression.")
