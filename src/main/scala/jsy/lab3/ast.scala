@@ -73,6 +73,11 @@ object ast {
     case Function(_, _, _) => true
     case _ => false
   }
+
+  def isArith(b: Bop): Boolean = b match {
+    case Plus | Minus | Times | Div | Lt | Le | Gt | Ge => true
+    case _ => false
+  }
   
   /*
    * Pretty-print values.

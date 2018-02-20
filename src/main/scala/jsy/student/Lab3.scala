@@ -281,7 +281,25 @@ object Lab3 extends JsyApplication with Lab3Like {
       case Print(e1) => Print(step(e1))
       
         // ****** Your cases here
-
+      case Unary(uop, e) => {
+        Unary(uop, step(e))
+      }
+      case Binary(bop, e1, e2) => {
+        Binary(bop, step(e1), e2)
+      }
+      case Binary(bop, v, e) if(isArith(bop)) => {
+        Binary(bop, v, step(e))
+      }
+      case Binary(bop, v, e) if(!isArith(bop)) => {
+        if(!isFunction(e)) {
+          Binary(bop, v, step(e))
+        } else {
+          throw DynamicTypeError(e)
+        }
+      }
+      case If(e1, e2, e3) => {
+        If(step(e1), e2, e3)
+      }
 
       /* Cases that should never match. Your cases above should ensure this. */
       case Var(_) => throw new AssertionError("Gremlins: internal error, not closed expression.")
