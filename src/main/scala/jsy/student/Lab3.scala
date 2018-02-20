@@ -229,6 +229,25 @@ object Lab3 extends JsyApplication with Lab3Like {
       case Binary(Div, v1, v2) if(isValue(v1) && isValue(v2)) => {
         N(toNumber(v1) / toNumber(v2))
       }
+      case Binary(Eq, v1, v2) if(isValue(v1) && isValue(v2)) => {
+        if(toStr(v1) == toStr(v2)) B(true) else B(false)
+      }
+      case Binary(Ne, v1, v2) if(isValue(v1) && isValue(v2)) => {
+        if(toStr(v1) != toStr(v2)) B(true) else B(false)
+      }
+      case Binary(Lt, v1, v2) if(isValue(v1) && isValue(v2)) => {
+        if(toStr(v1) < toStr(v2)) B(true) else B(false)
+      }
+      case Binary(Le, v1, v2) if(isValue(v1) && isValue(v2)) => {
+        if(toStr(v1) <= toStr(v2)) B(true) else B(false)
+      }
+      case Binary(Gt, v1, v2) if(isValue(v1) && isValue(v2)) => {
+        if(toStr(v1) > toStr(v2)) B(true) else B(false)
+      }
+      case Binary(Ge, v1, v2) if(isValue(v1) && isValue(v2)) => {
+        if(toStr(v1) >= toStr(v2)) B(true) else B(false)
+      }
+        
         // ****** Your cases here
       
       /* Inductive Cases: Search Rules */
