@@ -259,7 +259,12 @@ object Lab3 extends JsyApplication with Lab3Like {
       case Binary(And, B(false), e) => {
         e
       }
-
+      case If(B(true), e1, e2) => {
+        e1
+      }
+      case If(B(false), e1, e2) =>{
+        e2
+      }
         // ****** Your cases here
       
       /* Inductive Cases: Search Rules */
