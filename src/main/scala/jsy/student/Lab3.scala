@@ -247,7 +247,19 @@ object Lab3 extends JsyApplication with Lab3Like {
       case Binary(Ge, v1, v2) if(isValue(v1) && isValue(v2)) => {
         if(toStr(v1) >= toStr(v2)) B(true) else B(false)
       }
-        
+      case Binary(And, B(true), e) => {
+        e
+      }
+      case Binary(And, B(false), e) => {
+        B(false)
+      }
+      case Binary(And, B(true), e) => {
+        B(true)
+      }
+      case Binary(And, B(false), e) => {
+        e
+      }
+
         // ****** Your cases here
       
       /* Inductive Cases: Search Rules */
