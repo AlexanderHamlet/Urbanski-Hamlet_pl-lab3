@@ -202,7 +202,7 @@ object Lab3 extends JsyApplication with Lab3Like {
       case Binary(bop, e1, e2) => Binary(bop, substitute(e1, v, x), substitute(e2, v, x))
       case If(e1, e2, e3) => If(substitute(e1, v, x), substitute(e2, v, x), substitute(e3, v, x))
       case Call(e1, e2) => ???
-      case Var(y) => ???
+      case Var(y) => if(x == y) { v } else { e }
       case Function(None, y, e1) => ???
       case Function(Some(y1), y2, e1) => ???
       case ConstDecl(y, e1, e2) => ???
@@ -284,6 +284,16 @@ object Lab3 extends JsyApplication with Lab3Like {
       case If(B(false), e1, e2) =>{
         e2
       }
+      case Call(v1, v2) if (isFunction(v1) && isValue(v2)) => {
+        v1 match {
+          case Function(None, param, ebody) => {
+            substitute(ebody, v2, param)
+          }
+          case Function(Some(name), param, ebody) => {
+            substitute(ebody, v2, param)
+          }
+        }
+      }
         // ****** Your cases here
       
       /* Inductive Cases: Search Rules */
@@ -309,6 +319,9 @@ object Lab3 extends JsyApplication with Lab3Like {
       }
       case If(e1, e2, e3) => {
         If(step(e1), e2, e3)
+      }
+      case ConstDecl(x, e1, e2) => {
+        ConstDecl(x, step(e1), e2)
       }
 
       /* Cases that should never match. Your cases above should ensure this. */

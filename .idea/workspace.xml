@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c356d717-d891-461c-b2d1-16125273a9dd" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/jsy/lab3/ast.scala" afterPath="$PROJECT_DIR$/src/main/scala/jsy/lab3/ast.scala" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/jsy/student/Lab3.scala" afterPath="$PROJECT_DIR$/src/main/scala/jsy/student/Lab3.scala" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/jsy/lab3/ast$.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/jsy/lab3/ast$.class" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/jsy/lab3/ast$DynamicTypeError$.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/jsy/lab3/ast$DynamicTypeError$.class" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/jsy/lab3/ast$DynamicTypeError.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/jsy/lab3/ast$DynamicTypeError.class" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/jsy/lab3/ast.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/jsy/lab3/ast.class" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/jsy/student/Lab3$.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/jsy/student/Lab3$.class" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/project/project/target/" />
@@ -31,8 +25,8 @@
       <file leaf-file-name="Lab3.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/jsy/student/Lab3.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="204" column="24" lean-forward="false" selection-start-line="204" selection-start-column="21" selection-end-line="204" selection-end-column="24" />
+            <state relative-caret-position="449">
+              <caret line="217" column="7" lean-forward="true" selection-start-line="217" selection-start-column="7" selection-end-line="217" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -41,7 +35,7 @@
       <file leaf-file-name="ast.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/jsy/lab3/ast.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
+            <state relative-caret-position="74">
               <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
               <folding />
             </state>
@@ -374,7 +368,7 @@
       <workItem from="1518906514485" duration="6623000" />
       <workItem from="1519158342012" duration="2757000" />
       <workItem from="1519170827860" duration="1523000" />
-      <workItem from="1519238995182" duration="1607000" />
+      <workItem from="1519238995182" duration="2962000" />
     </task>
     <servers />
   </component>
@@ -411,7 +405,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19025000" />
+    <option name="totallyTimeSpent" value="20380000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="827" extended-state="0" />
@@ -815,7 +809,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/jsy/lab3/ast.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
+        <state relative-caret-position="74">
           <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding />
         </state>
@@ -823,8 +817,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/jsy/student/Lab3.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="204" column="24" lean-forward="false" selection-start-line="204" selection-start-column="21" selection-end-line="204" selection-end-column="24" />
+        <state relative-caret-position="449">
+          <caret line="217" column="7" lean-forward="true" selection-start-line="217" selection-start-column="7" selection-end-line="217" selection-end-column="7" />
           <folding />
         </state>
       </provider>
