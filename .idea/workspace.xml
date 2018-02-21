@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c356d717-d891-461c-b2d1-16125273a9dd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/jsy/student/Lab3.scala" afterPath="$PROJECT_DIR$/src/main/scala/jsy/student/Lab3.scala" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -25,8 +24,8 @@
       <file leaf-file-name="Lab3.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/jsy/student/Lab3.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="771">
-              <caret line="245" column="23" lean-forward="true" selection-start-line="245" selection-start-column="23" selection-end-line="245" selection-end-column="23" />
+            <state relative-caret-position="351">
+              <caret line="214" column="30" lean-forward="true" selection-start-line="214" selection-start-column="30" selection-end-line="214" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -396,12 +395,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Lab3Suite - 2018.02.20 at 09h 22m 49s.xml">
-      <configuration name="Lab3Suite" configurationId="ScalaTestRunConfiguration" />
-    </history-entry>
-    <history-entry file="Lab3Suite - 2018.02.20 at 09h 43m 14s.xml">
-      <configuration name="Lab3Suite" configurationId="ScalaTestRunConfiguration" />
-    </history-entry>
     <history-entry file="Lab3Suite - 2018.02.20 at 13h 47m 02s.xml">
       <configuration name="Lab3Suite" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
@@ -424,6 +417,12 @@
       <configuration name="Lab3Suite" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
     <history-entry file="Lab3Suite - 2018.02.20 at 17h 50m 38s.xml">
+      <configuration name="Lab3Suite" configurationId="ScalaTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="Lab3Suite - 2018.02.20 at 19h 19m 05s.xml">
+      <configuration name="Lab3Suite" configurationId="ScalaTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="Lab3Suite - 2018.02.20 at 19h 23m 07s.xml">
       <configuration name="Lab3Suite" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
   </component>
@@ -900,8 +899,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/jsy/student/Lab3.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="771">
-          <caret line="245" column="23" lean-forward="true" selection-start-line="245" selection-start-column="23" selection-end-line="245" selection-end-column="23" />
+        <state relative-caret-position="351">
+          <caret line="214" column="30" lean-forward="true" selection-start-line="214" selection-start-column="30" selection-end-line="214" selection-end-column="30" />
           <folding />
         </state>
       </provider>
