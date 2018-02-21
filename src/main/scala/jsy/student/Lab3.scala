@@ -79,6 +79,11 @@ object Lab3 extends JsyApplication with Lab3Like {
     }
   }
 
+  def isNotFunction(e: Expr): Boolean = e match {
+    case Function(_,_,_) => false
+    case _ => true
+  }
+
   /*
    * Helper function that implements the semantics of inequality
    * operators Lt, Le, Gt, and Ge on values.
@@ -213,7 +218,7 @@ object Lab3 extends JsyApplication with Lab3Like {
       case Binary(bop, e1, e2) => Binary(bop, substitute(e1, v, x), substitute(e2, v, x))
       case If(e1, e2, e3) => If(substitute(e1, v, x), substitute(e2, v, x), substitute(e3, v, x))
       case Call(e1, e2) => Call(substitute(e1, v, x), substitute(e2, v, x))
-      case Var(y) => if(x == y) { v } else { e }
+      case Var(y) => if(x == y)  v else  e
       case Function(None, y, e1) => if(y == x) Function(None, y, e1) else Function(None, y, substitute(e1, v, x))
       case Function(Some(y1), y2, e1) => if( y1 == x | y2 == x) Function(Some(y1), y2, e1) else Function(Some(y1), y2, substitute(e1, v, x))
       case ConstDecl(y, e1, e2) => if(y == x) ConstDecl(y, substitute(e1, v, x), e2) else ConstDecl(y, substitute(e1, v, x), substitute(e2, v, x))
@@ -267,7 +272,7 @@ object Lab3 extends JsyApplication with Lab3Like {
       case Print(e1) => Print(step(e1))
       case Unary(uop, e1) => Unary(uop, step(e1))
       case Binary(bop, e1, e2) => if(isValue(e1)) bop match {
-        case Eq | Ne => Binary(bop, e1, step(e2))
+        case Eq | Ne if isNotFunction(e1) => Binary(bop, e1, step(e2))
         case _ => Binary(bop, e1, step(e2))
       } else Binary(bop, step(e1), e2)
       case If(e1, e2, e3) => If(step(e1), e2, e3)
