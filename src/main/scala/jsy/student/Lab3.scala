@@ -90,8 +90,29 @@ object Lab3 extends JsyApplication with Lab3Like {
     require(isValue(v1))
     require(isValue(v2))
     require(bop == Lt || bop == Le || bop == Gt || bop == Ge)
+    def notString(bop: Bop, v1: Expr, v2: Expr): Boolean = {
+      val number_v1 = toNumber(v1)
+      val number_v2 = toNumber(v2)
+      bop match {
+        case Lt => number_v1 < number_v2
+        case Le => number_v1 <= number_v2
+        case Gt => number_v1 > number_v2
+        case Ge => number_v2 >= number_v2
+      }
+    }
     (v1, v2) match {
-      case _ => ??? // delete this line when done
+      case (N(_) | B(_) | Function(_,_,_) | Undefined, _) => notString(bop, v1, v2)
+      case (_, N(_) | B(_) | Function(_,_,_) | Undefined) => notString(bop, v1, v2)
+      case (S(_), S(_)) => {
+        val string_v1 = toStr(v1)
+        val string_v2 = toStr(v2)
+        bop match {
+          case Lt => string_v1 < string_v2
+          case Le => string_v1 <= string_v2
+          case Gt => string_v1 > string_v2
+          case Ge => string_v1 >= string_v2
+        }
+      }
     }
   }
 
@@ -203,73 +224,49 @@ object Lab3 extends JsyApplication with Lab3Like {
     e match {
       /* Base Cases: Do Rules */
       case Print(v1) if isValue(v1) => println(pretty(v1)); Undefined
-      case Unary(Neg, v) if(isValue(v)) => {
-        N(-toNumber(v))
+      case Unary(uop, v) if isValue(v) => uop match {
+        case Neg => N(-toNumber(v))
+        case Not => B(!toBoolean(v))
       }
-      case Unary(Not, v) if(isValue(v)) => {
-        B(!toBoolean(v))
-      }
-      case Binary(Seq, e1, e2) if(isValue(e1)) => {
-        e2
-      }
-      case Binary(Plus, v1, v2) if(isValue(v1) && isValue(v2)) => {
-        (v1, v2) match {
-          case (N(n1), N(n2)) => N(n1 + n2)
-          case (S(s1), S(s2)) => S(s1 + s2)
-          case (S(s), v) => S(s + toStr(v))
-          case (v, S(s)) => S(toStr(v) + s)
+      case Binary(bop, v1, v2) if isValue(v1) => bop match {
+        // v2 may not be a value for the following 3 cases
+        case Seq => v2
+        case And => if(toBoolean(v1)) v2 else v1
+        case Or => if(toBoolean(v1)) v1 else v2
+        // v2 has to be a value for the rest of the cases
+        case _  if isValue(v2) => bop match {
+          case Plus =>(v1, v2) match {
+            case (N(n1), N(n2)) => N(n1 + n2)
+            case (S(s1), S(s2)) => S(s1 + s2)
+            case (S(s), v) => S(s + toStr(v))
+            case (v, S(s)) => S(toStr(v) + s)
+          }
+          case Minus => N(toNumber(v1) - toNumber(v2))
+          case Times => N(toNumber(v1) * toNumber(v2))
+          case Div => {
+            val number_v1 = toNumber(v1)
+            val number_v2 = toNumber(v2)
+            if(number_v2 == 0 && number_v1>0) N(Double.PositiveInfinity)
+            else if(number_v2 == 0 && number_v1 < 0) N(Double.NegativeInfinity)
+            else N(number_v1/number_v2)
+          }
+          case Eq => B(v1 == v2)
+          case Ne => B(v1 != v2)
+          case Lt | Le | Gt | Ge => B(inequalityVal(bop, v1, v2))
         }
       }
-      case Binary(Minus, v1, v2) if(isValue(v1) && isValue(v2)) => {
-        N(toNumber(v1) - toNumber(v2))
-      }
-      case Binary(Times, v1, v2) if(isValue(v1) && isValue(v2)) => {
-        N(toNumber(v1) * toNumber(v2))
-      }
-      case Binary(Div, v1, v2) if(isValue(v1) && isValue(v2)) => {
-        N(toNumber(v1) / toNumber(v2))
-      }
-      case Binary(Eq, v1, v2) if(isValue(v1) && isValue(v2)) => {
-        if(toStr(v1) == toStr(v2)) B(true) else B(false)
-      }
-      case Binary(Ne, v1, v2) if(isValue(v1) && isValue(v2)) => {
-        if(toStr(v1) != toStr(v2)) B(true) else B(false)
-      }
-      case Binary(Lt, v1, v2) if(isValue(v1) && isValue(v2)) => {
-        if(toStr(v1) < toStr(v2)) B(true) else B(false)
-      }
-      case Binary(Le, v1, v2) if(isValue(v1) && isValue(v2)) => {
-        if(toStr(v1) <= toStr(v2)) B(true) else B(false)
-      }
-      case Binary(Gt, v1, v2) if(isValue(v1) && isValue(v2)) => {
-        if(toStr(v1) > toStr(v2)) B(true) else B(false)
-      }
-      case Binary(Ge, v1, v2) if(isValue(v1) && isValue(v2)) => {
-        if(toStr(v1) >= toStr(v2)) B(true) else B(false)
-      }
-      case Binary(And, B(true), e) => {
-        e
-      }
-      case Binary(And, B(false), e) => {
-        B(false)
-      }
-      case Binary(And, B(true), e) => {
-        B(true)
-      }
-      case Binary(And, B(false), e) => {
-        e
-      }
-      case If(B(true), e1, e2) => {
-        e1
-      }
-      case If(B(false), e1, e2) =>{
-        e2
-      }
+      case If(v1, e2, e3) if isValue(v1) => if(toBoolean(v1)) e2 else e3
+      case ConstDecl(x, v1, e2) => ???
+      case Call(e1, e2) => ???
         // ****** Your cases here
       
       /* Inductive Cases: Search Rules */
       case Print(e1) => Print(step(e1))
-      
+      case Unary(uop, e1) => Unary(uop, step(e1))
+      case Binary(bop, e1, e2) => if(isValue(e1)) Binary(bop, e1, step(e2)) else Binary(bop, step(e1), e2)
+      case If(e1, e2, e3) => If(step(e1), e2, e3)
+      case ConstDecl(x, e1, e2) => ConstDecl(x, step(e1), e2)
+      case Call(e1, e2) => Call(step(e1), step(e2))
         // ****** Your cases here
 
       /* Cases that should never match. Your cases above should ensure this. */
