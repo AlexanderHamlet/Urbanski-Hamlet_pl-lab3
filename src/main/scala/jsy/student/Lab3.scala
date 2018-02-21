@@ -266,7 +266,10 @@ object Lab3 extends JsyApplication with Lab3Like {
       /* Inductive Cases: Search Rules */
       case Print(e1) => Print(step(e1))
       case Unary(uop, e1) => Unary(uop, step(e1))
-      case Binary(bop, e1, e2) => if(isValue(e1)) Binary(bop, e1, step(e2)) else Binary(bop, step(e1), e2)
+      case Binary(bop, e1, e2) => if(isValue(e1)) bop match {
+        case Eq | Ne => Binary(bop, e1, step(e2))
+        case _ => Binary(bop, e1, step(e2))
+      } else Binary(bop, step(e1), e2)
       case If(e1, e2, e3) => If(step(e1), e2, e3)
       case ConstDecl(x, e1, e2) => ConstDecl(x, step(e1), e2)
       case Call(e1, e2) => if(isValue(e1)) Call(e1, step(e2)) else Call(step(e1), e2)
