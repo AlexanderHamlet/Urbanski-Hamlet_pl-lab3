@@ -37,6 +37,21 @@ object Lab3 extends JsyApplication with Lab3Like {
    * The implementations of these helper functions for conversions can come
    * Lab 2. The definitions for the new value type for Function are given.
    */
+
+  def isFunction(e: Expr): Boolean = e match {
+    case Function(_, _, _) => true
+    case _ => false
+  }
+
+  def isNotFunction(e: Expr): Boolean = e match {
+    case Function(_,_,_) => false
+    case _ => true
+  }
+
+  def isArith(b: Bop): Boolean = b match {
+    case Plus | Minus | Times | Div | Lt | Le | Gt | Ge => true
+    case _ => false
+  }
   
   def toNumber(v: Expr): Double = {
     require(isValue(v))
@@ -79,11 +94,6 @@ object Lab3 extends JsyApplication with Lab3Like {
     }
   }
 
-  def isNotFunction(e: Expr): Boolean = e match {
-    case Function(_,_,_) => false
-    case _ => true
-  }
-
   /*
    * Helper function that implements the semantics of inequality
    * operators Lt, Le, Gt, and Ge on values.
@@ -96,13 +106,19 @@ object Lab3 extends JsyApplication with Lab3Like {
     require(isValue(v2))
     require(bop == Lt || bop == Le || bop == Gt || bop == Ge)
     def notString(bop: Bop, v1: Expr, v2: Expr): Boolean = {
-      val number_v1 = toNumber(v1)
-      val number_v2 = toNumber(v2)
-      bop match {
-        case Lt => number_v1 < number_v2
-        case Le => number_v1 <= number_v2
-        case Gt => number_v1 > number_v2
-        case Ge => number_v2 >= number_v2
+      if(!isFunction(v1)){
+        throw DynamicTypeError(v1)
+      } else if(!isFunction(v2)) {
+        throw DynamicTypeError(v2)
+      } else {
+        val number_v1 = toNumber(v1)
+        val number_v2 = toNumber(v2)
+        bop match {
+          case Lt => number_v1 < number_v2
+          case Le => number_v1 <= number_v2
+          case Gt => number_v1 > number_v2
+          case Ge => number_v2 >= number_v2
+        }
       }
     }
     (v1, v2) match {
@@ -140,8 +156,8 @@ object Lab3 extends JsyApplication with Lab3Like {
       case ConstDecl(x, e1, e2) => eval(extend(env, x, eval(env, e1)), e2)
 
       case Call(e1, e2) => eval(env, e1) match {
-        case Function(None, param, ebody) => eval(extend(env, param, eval(env, e2)), ebody)
-        case v1 @ Function(Some(name), param, ebody) => {
+        case Function(None, param, ebody) if(isFunction(Function(None, param, ebody))) => eval(extend(env, param, eval(env, e2)), ebody)
+        case v1 @ Function(Some(name), param, ebody) if(isFunction(v1)) => {
           val env2 = extend(env, name, eval(env, v1))
           eval(extend(env2, param, eval(env2, e2)), ebody)
         }
@@ -177,7 +193,19 @@ object Lab3 extends JsyApplication with Lab3Like {
           else N(v1/v2)
         }
 
-        case Eq => if(toStr(eval(env, e1)) == toStr(eval(env, e2))) B(true) else B(false)
+        case Eq => {
+          val eval1 = eval(env, e1)
+          val eval2 = eval(env, e2)
+          if(isFunction(eval1)){
+            throw DynamicTypeError(e)
+          }
+          else if (isFunction(eval2)){
+            throw DynamicTypeError(e)
+          } else {
+            if(toStr(eval1) == toStr(eval2)) B(true) else B(false)
+          }
+        }
+
         case Ne => if(toStr(eval(env, e1)) != toStr(eval(env, e2))) B(true) else B(false)
         case Lt => if(toNumber(eval(env, e1)) < toNumber(eval(env, e2))) B(true) else B(false)
         case Le => if(toNumber(eval(env, e1)) <= toNumber(eval(env, e2))) B(true) else B(false)
