@@ -100,8 +100,29 @@ object Lab3 extends JsyApplication with Lab3Like {
     require(isValue(v1))
     require(isValue(v2))
     require(bop == Lt || bop == Le || bop == Gt || bop == Ge)
+    def notString(bop: Bop, v1: Expr, v2: Expr): Boolean = {
+      val number_v1 = toNumber(v1)
+      val number_v2 = toNumber(v2)
+      bop match {
+        case Lt => number_v1 < number_v2
+        case Le => number_v1 <= number_v2
+        case Gt => number_v1 > number_v2
+        case Ge => number_v2 >= number_v2
+      }
+    }
     (v1, v2) match {
-      case _ => ??? // delete this line when done
+      case (N(_) | B(_) | Function(_,_,_) | Undefined, _) => notString(bop, v1, v2)
+      case (_, N(_) | B(_) | Function(_,_,_) | Undefined) => notString(bop, v1, v2)
+      case (S(_), S(_)) => {
+        val string_v1 = toStr(v1)
+        val string_v2 = toStr(v2)
+        bop match {
+          case Lt => string_v1 < string_v2
+          case Le => string_v1 <= string_v2
+          case Gt => string_v1 > string_v2
+          case Ge => string_v1 >= string_v2
+        }
+      }
     }
   }
 
@@ -201,11 +222,11 @@ object Lab3 extends JsyApplication with Lab3Like {
       case Unary(uop, e1) => Unary(uop, substitute(e1, v, x))
       case Binary(bop, e1, e2) => Binary(bop, substitute(e1, v, x), substitute(e2, v, x))
       case If(e1, e2, e3) => If(substitute(e1, v, x), substitute(e2, v, x), substitute(e3, v, x))
-      case Call(e1, e2) => ???
+      case Call(e1, e2) => Call(substitute(e1, v, x), substitute(e2, v, x))
       case Var(y) => if(x == y) { v } else { e }
-      case Function(None, y, e1) => ???
-      case Function(Some(y1), y2, e1) => ???
-      case ConstDecl(y, e1, e2) => ???
+      case Function(None, y, e1) => if(y == x) Function(None, y, e1) else Function(None, y, substitute(e1, v, x))
+      case Function(Some(y1), y2, e1) => if( y1 == x | y2 == x) Function(Some(y1), y2, e1) else Function(Some(y1), y2, substitute(e1, v, x))
+      case ConstDecl(y, e1, e2) => if(y == x) ConstDecl(y, substitute(e1, v, x), e2) else ConstDecl(y, substitute(e1, v, x), substitute(e2, v, x))
     }
   }
 
@@ -284,6 +305,7 @@ object Lab3 extends JsyApplication with Lab3Like {
       case If(B(false), e1, e2) =>{
         e2
       }
+      case ConstDecl(x, v1, e2) if isValue(v1) => substitute(e2, v1, x)
       case Call(v1, v2) if (isFunction(v1) && isValue(v2)) => {
         v1 match {
           case Function(None, param, ebody) => {
@@ -323,6 +345,7 @@ object Lab3 extends JsyApplication with Lab3Like {
       case ConstDecl(x, e1, e2) => {
         ConstDecl(x, step(e1), e2)
       }
+      case Call(e1, e2) => if(isValue(e1)) Call(e1, step(e2)) else Call(step(e1), e2)
 
       /* Cases that should never match. Your cases above should ensure this. */
       case Var(_) => throw new AssertionError("Gremlins: internal error, not closed expression.")
