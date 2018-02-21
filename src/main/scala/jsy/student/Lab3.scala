@@ -37,6 +37,16 @@ object Lab3 extends JsyApplication with Lab3Like {
    * The implementations of these helper functions for conversions can come
    * Lab 2. The definitions for the new value type for Function are given.
    */
+
+  def isFunction(e: Expr): Boolean = e match {
+    case Function(_, _, _) => true
+    case _ => false
+  }
+
+  def isArith(b: Bop): Boolean = b match {
+    case Plus | Minus | Times | Div | Lt | Le | Gt | Ge => true
+    case _ => false
+  }
   
   def toNumber(v: Expr): Double = {
     require(isValue(v))
@@ -188,9 +198,9 @@ object Lab3 extends JsyApplication with Lab3Like {
     e match {
       case N(_) | B(_) | Undefined | S(_) => e
       case Print(e1) => Print(substitute(e1, v, x))
-      case Unary(uop, e1) => ???
-      case Binary(bop, e1, e2) => ???
-      case If(e1, e2, e3) => ???
+      case Unary(uop, e1) => Unary(uop, substitute(e1, v, x))
+      case Binary(bop, e1, e2) => Binary(bop, substitute(e1, v, x), substitute(e2, v, x))
+      case If(e1, e2, e3) => If(substitute(e1, v, x), substitute(e2, v, x), substitute(e3, v, x))
       case Call(e1, e2) => ???
       case Var(y) => ???
       case Function(None, y, e1) => ???
