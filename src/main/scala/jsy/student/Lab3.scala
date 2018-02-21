@@ -250,14 +250,17 @@ object Lab3 extends JsyApplication with Lab3Like {
             else if(number_v2 == 0 && number_v1 < 0) N(Double.NegativeInfinity)
             else N(number_v1/number_v2)
           }
-          case Eq => B(v1 == v2)
-          case Ne => B(v1 != v2)
+          case Eq if isValue(v1) && isValue(v2) => B(v1 == v2)
+          case Ne if isValue(v1) && isValue(v2) => B(v1 != v2)
           case Lt | Le | Gt | Ge => B(inequalityVal(bop, v1, v2))
         }
       }
       case If(v1, e2, e3) if isValue(v1) => if(toBoolean(v1)) e2 else e3
-      case ConstDecl(x, v1, e2) => ???
-      case Call(e1, e2) => ???
+      case ConstDecl(x, v1, e2) if isValue(v1) => substitute(e2, v1, x)
+      case Call(v1, v2) if isValue(v1) && isValue(v2) => v1 match {
+        case Function(None, x, e1) => substitute(e1, v2, x)
+        case Function(Some(x1), x2, e1) => substitute(substitute(e1, v2, x2), v1, x1)
+    }
         // ****** Your cases here
       
       /* Inductive Cases: Search Rules */
