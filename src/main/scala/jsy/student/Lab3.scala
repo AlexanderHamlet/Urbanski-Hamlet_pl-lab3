@@ -212,10 +212,10 @@ object Lab3 extends JsyApplication with Lab3Like {
       case Unary(uop, e1) => Unary(uop, substitute(e1, v, x))
       case Binary(bop, e1, e2) => Binary(bop, substitute(e1, v, x), substitute(e2, v, x))
       case If(e1, e2, e3) => If(substitute(e1, v, x), substitute(e2, v, x), substitute(e3, v, x))
-      case Call(e1, e2) => ???
+      case Call(e1, e2) => Call(substitute(e1, v, x), substitute(e2, v, x))
       case Var(y) => if(y == x) e else Var(y)
-      case Function(None, y, e1) => ???
-      case Function(Some(y1), y2, e1) => ???
+      case Function(None, y, e1) => if(y == x) Function(None, y, e1) else Function(None, y, substitute(e1, v, x))
+      case Function(Some(y1), y2, e1) => if( y1 == x | y2 == x) Function(Some(y1), y2, e1) else Function(Some(y1), y2, substitute(e1, v, x))
       case ConstDecl(y, e1, e2) => if(y == x) ConstDecl(y, substitute(e1, v, x), e2) else ConstDecl(y, substitute(e1, v, x), substitute(e2, v, x))
     }
   }
@@ -269,7 +269,7 @@ object Lab3 extends JsyApplication with Lab3Like {
       case Binary(bop, e1, e2) => if(isValue(e1)) Binary(bop, e1, step(e2)) else Binary(bop, step(e1), e2)
       case If(e1, e2, e3) => If(step(e1), e2, e3)
       case ConstDecl(x, e1, e2) => ConstDecl(x, step(e1), e2)
-      case Call(e1, e2) => Call(step(e1), step(e2))
+      case Call(e1, e2) => if(isValue(e1)) Call(e1, step(e2)) else Call(step(e1), e2)
         // ****** Your cases here
 
       /* Cases that should never match. Your cases above should ensure this. */
