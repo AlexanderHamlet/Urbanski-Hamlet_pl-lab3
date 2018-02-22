@@ -189,19 +189,20 @@ object Lab3 extends JsyApplication with Lab3Like {
         }
 
         case Eq => {
-          val eval1 = eval(env, e1)
-          val eval2 = eval(env, e2)
-          if(isFunction(eval1)){
-            throw DynamicTypeError(e)
-          }
-          else if (isFunction(eval2)){
+          if(isFunction(e1) || isFunction(e2)){
             throw DynamicTypeError(e)
           } else {
-            if(toStr(eval1) == toStr(eval2)) B(true) else B(false)
+            if(toStr(eval(env, e1)) == toStr(eval(env, e2))) B(true) else B(false)
           }
         }
 
-        case Ne => if(toStr(eval(env, e1)) != toStr(eval(env, e2))) B(true) else B(false)
+        case Ne => {
+          if(isFunction(e1) || isFunction(e2)){
+            throw DynamicTypeError(e)
+          } else {
+            if(toStr(eval(env, e1)) == toStr(eval(env, e2))) B(true) else B(false)
+          }
+        }
         case Lt => if(toNumber(eval(env, e1)) < toNumber(eval(env, e2))) B(true) else B(false)
         case Le => if(toNumber(eval(env, e1)) <= toNumber(eval(env, e2))) B(true) else B(false)
         case Gt => if(toNumber(eval(env, e1)) > toNumber(eval(env, e2))) B(true) else B(false)
