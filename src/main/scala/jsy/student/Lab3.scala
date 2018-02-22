@@ -175,12 +175,9 @@ object Lab3 extends JsyApplication with Lab3Like {
         case Plus => {
           val v1 = eval(env, e1)
           val v2 = eval(env, e2)
-          v1 match {
-            case S(_) => S(toStr((v1)) + toStr(v2))
-            case _ => v2 match {
-              case S(_) => S(toStr(v1) + toStr(v2))
-              case _ => N(toNumber(v1) + toNumber(v2))
-            }
+          (v1, v2) match {
+            case (S(_), S(_)) | (S(_), _) | (_, S(_)) => S(toStr((v1)) + toStr(v2))
+            case _ => N(toNumber(v1) + toNumber(v2))
           }
         }
         case Minus => N(toNumber(eval(env, e1)) - toNumber(eval(env, e2)))
@@ -248,7 +245,7 @@ object Lab3 extends JsyApplication with Lab3Like {
       case Call(e1, e2) => Call(substitute(e1, v, x), substitute(e2, v, x))
       case Var(y) => if(x == y)  v else  e
       case Function(None, y, e1) => if(y == x) Function(None, y, e1) else Function(None, y, substitute(e1, v, x))
-      case Function(Some(y1), y2, e1) => if( y1 == x | y2 == x) Function(Some(y1), y2, e1) else Function(Some(y1), y2, substitute(e1, v, x))
+      case Function(Some(y1), y2, e1) => if( y1 == x | y2 == x) e else Function(Some(y1), y2, substitute(e1, v, x))
       case ConstDecl(y, e1, e2) => if(y == x) ConstDecl(y, substitute(e1, v, x), e2) else ConstDecl(y, substitute(e1, v, x), substitute(e2, v, x))
     }
   }
@@ -261,33 +258,28 @@ object Lab3 extends JsyApplication with Lab3Like {
         case Neg => N(-toNumber(v))
         case Not => B(!toBoolean(v))
       }
-      case Binary(bop, v1, v2) if isValue(v1) => bop match {
-        // v2 may not be a value for the following 3 cases
-        case Seq => v2
-        case And => if(toBoolean(v1)) v2 else v1
-        case Or => if(toBoolean(v1)) v1 else v2
-        // v2 has to be a value for the rest of the cases
-        case _  if isValue(v2) => bop match {
-          case Plus =>(v1, v2) match {
-            case (N(n1), N(n2)) => N(n1 + n2)
-            case (S(s1), S(s2)) => S(s1 + s2)
-            case (S(s), v) => S(s + toStr(v))
-            case (v, S(s)) => S(toStr(v) + s)
-          }
-          case Minus => N(toNumber(v1) - toNumber(v2))
-          case Times => N(toNumber(v1) * toNumber(v2))
-          case Div => {
-            val number_v1 = toNumber(v1)
-            val number_v2 = toNumber(v2)
-            if(number_v2 == 0 && number_v1>0) N(Double.PositiveInfinity)
-            else if(number_v2 == 0 && number_v1 < 0) N(Double.NegativeInfinity)
-            else N(number_v1/number_v2)
-          }
-          case Eq if isValue(v1) && isValue(v2) => B(v1 == v2)
-          case Ne if isValue(v1) && isValue(v2) => B(v1 != v2)
-          case Lt | Le | Gt | Ge => B(inequalityVal(bop, v1, v2))
+      case Binary(Seq, v1, e2) if isValue(v1) => e2
+      case Binary(And, v1, e2) if isValue(v1) => if(toBoolean(v1)) e2 else v1
+      case Binary(Or, v1, e2) if isValue(v1) => if(toBoolean(v1)) v1 else e2
+      case Binary(bop, v1, v2) if isValue(v1) && isValue(v2) => bop match {
+        case Plus =>(v1, v2) match {
+          case (S(_), _) | (_, S(_)) => S(toStr(v1) + toStr(v2))
+          case _ => N(toNumber(v1) + toNumber(v2))
         }
+        case Minus => N(toNumber(v1) - toNumber(v2))
+        case Times => N(toNumber(v1) * toNumber(v2))
+        case Div => {
+          val number_v1 = toNumber(v1)
+          val number_v2 = toNumber(v2)
+          if(number_v2 == 0 && number_v1>0) N(Double.PositiveInfinity)
+          else if(number_v2 == 0 && number_v1 < 0) N(Double.NegativeInfinity)
+          else N(number_v1/number_v2)
+        }
+        case Eq if isValue(v1) && isValue(v2) => B(v1 == v2)
+        case Ne if isValue(v1) && isValue(v2) => B(v1 != v2)
+        case Lt | Le | Gt | Ge => B(inequalityVal(bop, v1, v2))
       }
+
       case If(v1, e2, e3) if isValue(v1) => if(toBoolean(v1)) e2 else e3
       case ConstDecl(x, v1, e2) if isValue(v1) => substitute(e2, v1, x)
       case Call(v1, v2) if isValue(v1) && isValue(v2) => v1 match {
