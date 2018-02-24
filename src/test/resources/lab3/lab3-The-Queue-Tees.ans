@@ -1,0 +1,13 @@
+# Evaluating ...
+2
+# Stepping ...
+##    0: ConstDecl(g,Function(None,x,Binary(Plus,Binary(Div,N(3.0),Var(x)),Binary(Minus,B(true),N(3.0)))),ConstDecl(q,Function(None,y,Binary(Plus,Var(y),Call(Var(g),Var(y)))),Call(Var(q),N(3.0))))
+##    1: ConstDecl(q,Function(None,y,Binary(Plus,Var(y),Call(Function(None,x,Binary(Plus,Binary(Div,N(3.0),Var(x)),Binary(Minus,B(true),N(3.0)))),Var(y)))),Call(Var(q),N(3.0)))
+##    2: Call(Function(None,y,Binary(Plus,Var(y),Call(Function(None,x,Binary(Plus,Binary(Div,N(3.0),Var(x)),Binary(Minus,B(true),N(3.0)))),Var(y)))),N(3.0))
+##    3: Binary(Plus,N(3.0),Call(Function(None,x,Binary(Plus,Binary(Div,N(3.0),Var(x)),Binary(Minus,B(true),N(3.0)))),N(3.0)))
+##    4: Binary(Plus,N(3.0),Binary(Plus,Binary(Div,N(3.0),N(3.0)),Binary(Minus,B(true),N(3.0))))
+##    5: Binary(Plus,N(3.0),Binary(Plus,N(1.0),Binary(Minus,B(true),N(3.0))))
+##    6: Binary(Plus,N(3.0),Binary(Plus,N(1.0),N(-2.0)))
+##    7: Binary(Plus,N(3.0),N(-1.0))
+##    8: N(2.0)
+2
